@@ -53,12 +53,12 @@ const zhTranslations = {
     step2_desc: "通过 CLI、OpenAPI Server 或 MCP Server 将工具接入 Hub。",
     step3_title: "建立工具库/工具分类",
     step3_desc: "按需跨工具源加入工具，组织成工具库并分类管理。",
-    step4_title: "Agent 端安装 connect-tool-library 技能",
+    step4_title: "安装 connect-tool-library 技能",
     step4_desc: "在 Agent 环境中安装 connect-tool-library 技能。",
-    step5_title: "与Agent对话，保存工具库密钥",
-    step5_desc: "Agent 对话：<code>connect tool library, save key pair &lt;tool_library_name=key&gt;</code>",
+    step5_title: "保存工具库密钥",
+    step5_desc: "与Agent对话，保存工具库密钥",
     step6_title: "开始使用",
-    step6_desc: "Agent 对话：<code>connect tool library to do something</code> 即可调用工具。",
+    step6_desc: "与Agent对话",
     tool_endpoint_section:"工具端",
     ai_agent_section:"AI Agent 端"
 }

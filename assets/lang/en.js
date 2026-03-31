@@ -55,10 +55,10 @@ const enTranslations = {
     step3_desc: "Add tools across sources as needed, organize them into libraries and categories.",
     step4_title: "Install connect-tool-library skill",
     step4_desc: "Install the connect-tool-library skill into your AI Agent environment.",
-    step5_title: "Chat with the agent to save the tool library key",
-    step5_desc: "Agent conversation: connect tool library, save key pair <tool_library_name=key>",
+    step5_title: "Save the tool library key",
+    step5_desc: "Chat with the agent to save the tool library key",
     step6_title: "Start Using",
-    step6_desc: "Agent conversation: connect tool library to do something to invoke tools.",
+    step6_desc: "Chat with the agent",
     tool_endpoint_section:"Tool Endpoint",
     ai_agent_section:"AI Agent"
 }
