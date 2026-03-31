@@ -337,10 +337,15 @@
         .footer-note {
             margin-top: 2rem;
             text-align: center;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             color: #7b8bc2;
             border-top: 1px solid rgba(100, 130, 230, 0.3);
             padding-top: 1.2rem;
+            display: flex;
+            align-items: center;    /* 垂直居中 */
+            justify-content: center;
+            gap: 8px;               /* 可选：控制间距 */
+            flex-wrap: wrap;
         }
         .footer-note a {
             color: #8cabff;
@@ -565,10 +570,8 @@
 
     <!-- 页脚链接 -->
     <div class="footer-note">
-        <p style="margin-top: 0.4rem;">
-            🔗 <strong data-i18n="cli_link_label">Cogentic CLI</strong> → <a href="https://github.com/cogenticlab/skills" target="_blank">github.com/cogenticlab/skills</a> &nbsp;|&nbsp;
-            🧩 <strong data-i18n="hub_link_label">Cogentic Hub</strong> → <a href="https://github.com/cogenticlab/cogentichub" target="_blank">github.com/cogenticlab/cogentichub</a>
-        </p>
+            <img height="24px" src="assets/cogentic_cli_banner.png"/><a href="https://github.com/cogenticlab/skills" target="_blank">https://github.com/cogenticlab/skills</a> &nbsp;|&nbsp;
+            <img height="24px" src="assets/cogentic_hub_banner.png"/><a href="https://github.com/cogenticlab/cogentichub" target="_blank">https://github.com/cogenticlab/cogentichub</a>
     </div>
 </div>
 
@@ -621,7 +624,7 @@
             dataflow_arrow2: "结果经 Cogentic Link 回传 Agent",
             footer_note_small: "<i class='fas fa-check-circle'></i> 所有卡片图标与标题同行，CLI 和 Hub 的标签已替换为 GitHub 图标。",
             footer_desc: "完全符合要求：左中右宽度比例1:2:2 | Platform核心层蓝色背景且内部左右（左 Link，右 Platform + Router） | Tool Provider层左侧 Hub 管理右侧 CLI/OpenAPI/MCP Server | 图标标题同行 | 可点击文字已替换为 GitHub 图标",
-            cli_link_label: "CLI",
+            cli_link_label: "Cogentic CLI",
             hub_link_label: "Cogentic Hub"
         },
         en: {
@@ -670,7 +673,7 @@
             dataflow_arrow2: "Results returned to Agent via Cogentic Link",
             footer_note_small: "<i class='fas fa-check-circle'></i> All cards have icon+title on same row; CLI and Hub labels replaced with GitHub icon.",
             footer_desc: "Fully compliant: left-center-right width ratio 1:2:2 | Platform core blue background with internal left-right (Left: Link, Right: Platform + Router) | Tool Provider left: Hub manages right: CLI/OpenAPI/MCP Server | Icon+title inline | Clickable text replaced with GitHub icon",
-            cli_link_label: "CLI",
+            cli_link_label: "Cogentic CLI",
             hub_link_label: "Cogentic Hub"
         }
     };
