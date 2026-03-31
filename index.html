@@ -4,398 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Cogentic</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: radial-gradient(circle at 20% 30%, #0b1120, #03050b);
-            font-family: 'Inter', sans-serif;
-            color: #edf2ff;
-            line-height: 1.4;
-            padding: 2rem 1.5rem;
-            position: relative;
-        }
-
-        /* 语言切换按钮 */
-        .lang-switch {
-            position: fixed;
-            top: 1.2rem;
-            right: 1.5rem;
-            z-index: 1000;
-            background: rgba(20, 30, 55, 0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 40px;
-            padding: 0.3rem 0.6rem;
-            border: 1px solid rgba(100, 150, 255, 0.5);
-            display: flex;
-            gap: 0.3rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        .lang-switch button {
-            background: transparent;
-            border: none;
-            color: #cbd9ff;
-            padding: 0.2rem 0.7rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-        .lang-switch button.active {
-            background: #3b82f6;
-            color: white;
-            box-shadow: 0 0 6px #3b82f6;
-        }
-        .lang-switch button:hover:not(.active) {
-            background: rgba(59, 130, 246, 0.4);
-            color: white;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* 头部 */
-        .hero {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #FFFFFF, #8aabff, #4f7aff);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.02em;
-        }
-        .hero .sub {
-            font-size: 1.1rem;
-            color: #9db4ff;
-            margin-top: 0.4rem;
-            border-bottom: 1px dashed rgba(100, 140, 255, 0.4);
-            display: inline-block;
-        }
-
-        /* 三列布局：左中右，宽度比例 1:2:2 */
-        .architecture {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: space-between;
-            margin: 1.5rem 0 1rem;
-        }
-
-        .layer {
-            background: rgba(10, 18, 32, 0.5);
-            backdrop-filter: blur(4px);
-            border-radius: 1.5rem;
-            padding: 1rem 0.9rem 1.2rem;
-            border: 1px solid rgba(80, 120, 255, 0.35);
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        /* Agent 层: flex-grow 1 */
-        .layer.agent-layer {
-            flex: 1;
-        }
-        /* Platform 核心层: flex-grow 2 */
-        .layer.platform-layer {
-            flex: 2;
-        }
-        /* 工具提供层层: flex-grow 2 */
-        .layer.provider-layer {
-            flex: 2;
-        }
-
-        /* Platform核心层专用蓝色背景 */
-        .layer.platform-layer.platform-core-bg {
-            background: linear-gradient(145deg, #0f2b5e, #0a1a3e);
-            border: 1px solid #3b82f6;
-            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
-        }
-
-        /* 层次标题 */
-        .layer-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(100, 140, 255, 0.6);
-        }
-        .layer-header i {
-            font-size: 1.4rem;
-            color: #7b9eff;
-        }
-        .layer-header h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            letter-spacing: -0.2px;
-        }
-        .layer-desc {
-            font-size: 0.65rem;
-            color: #adc0ff;
-            margin-bottom: 0.8rem;
-        }
-
-        /* 内部左右布局 */
-        .split-layout {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            align-items: stretch;
-        }
-        .split-left, .split-right {
-            flex: 1;
-            min-width: 180px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        /* ========== 全局卡片样式 ========== */
-        .card {
-            background: rgba(18, 28, 48, 0.85);
-            border-radius: 1rem;
-            padding: 0.7rem 0.8rem;
-            border: 1px solid rgba(90, 130, 255, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            backdrop-filter: blur(4px);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        /* 默认取消所有卡片的悬浮效果 */
-        .card:hover {
-            transform: none;
-            box-shadow: none;
-            border-color: rgba(90, 130, 255, 0.4);
-            background: rgba(18, 28, 48, 0.85);
-        }
-        a.card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        /* 图标和标题同行 */
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.3rem;
-        }
-        .card-icon {
-            font-size: 1.2rem;
-            color: #8fabff;
-            flex-shrink: 0;
-        }
-        .card-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-bottom: 0;
-            flex: 1;
-        }
-        .badge-sm {
-            background: #2a3a6e;
-            font-size: 0.55rem;
-            padding: 0.15rem 0.4rem;
-            border-radius: 30px;
-            font-weight: 400;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .card-desc {
-            font-size: 0.65rem;
-            color: #cbd9ff;
-            line-height: 1.35;
-            margin-top: 0.2rem;
-            flex: 1;
-        }
-        .connector-badge {
-            margin-top: 0.5rem;
-            font-size: 0.6rem;
-            color: #7d95e0;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            border-top: 1px dashed rgba(100, 130, 230, 0.4);
-            padding-top: 0.4rem;
-        }
-
-        /* 特定蓝色背景卡片（connect-tool-library 和 Cogentic Hub）保留悬浮效果 */
-        .card.blue-bg {
-            background: linear-gradient(135deg, #1e3a8a, #1e40af);
-            border-color: #3b82f6;
-            box-shadow: 0 3px 10px rgba(59,130,246,0.3);
-        }
-        .card.blue-bg .card-icon {
-            color: #c4e0ff;
-        }
-        .card.blue-bg .card-title {
-            color: #ffffff;
-        }
-        /* 仅保留蓝色背景卡片的悬浮效果 */
-        .card.blue-bg:hover {
-            transform: translateY(-2px);
-            border-color: #5f82ff;
-            box-shadow: 0 8px 18px -6px rgba(79, 125, 255, 0.4);
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-        }
-
-        /* 平台核心层内的卡片（无悬浮） */
-        .platform-core-bg .card {
-            background: rgba(25, 45, 75, 0.9);
-            border-color: rgba(100, 150, 255, 0.5);
-        }
-        .platform-core-bg .card:hover {
-            transform: none;
-            box-shadow: none;
-            background: rgba(25, 45, 75, 0.9);
-            border-color: rgba(100, 150, 255, 0.5);
-        }
-
-        /* 从属关系容器：Hub 生态 */
-        .hub-ecosystem {
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 1rem;
-            padding: 0.6rem;
-            border: 1px dashed rgba(100, 150, 255, 0.5);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .hub-ecosystem::before {
-            content: "由 Cogentic Hub 管理";
-            position: absolute;
-            top: -0.6rem;
-            left: 0.8rem;
-            background: #1e3a8a;
-            padding: 0.15rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.55rem;
-            font-weight: 500;
-            color: #ffffff;
-            letter-spacing: 0.2px;
-            backdrop-filter: blur(4px);
-            border: 1px solid #3b82f6;
-        }
-        [data-lang="en"] .hub-ecosystem::before {
-            content: "Managed by Cogentic Hub";
-        }
-
-        /* 右侧三个卡片进一步缩小（保持图标标题同行） */
-        .hub-ecosystem .card {
-            padding: 0.5rem 0.6rem;
-        }
-        .hub-ecosystem .card .card-icon {
-            font-size: 1rem;
-        }
-        .hub-ecosystem .card .card-title {
-            font-size: 0.8rem;
-        }
-        .hub-ecosystem .card .card-desc {
-            font-size: 0.6rem;
-            line-height: 1.3;
-        }
-        .hub-ecosystem .card .connector-badge {
-            font-size: 0.55rem;
-            margin-top: 0.4rem;
-            padding-top: 0.3rem;
-        }
-        .hub-ecosystem .badge-sm {
-            font-size: 0.5rem;
-            padding: 0.1rem 0.35rem;
-        }
-        .hub-ecosystem .card:hover {
-            transform: none;
-            box-shadow: none;
-            background: rgba(18, 28, 48, 0.85);
-            border-color: rgba(90, 130, 255, 0.4);
-        }
-
-        /* 底部说明 */
-        .footer-note {
-            margin-top: 2rem;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #7b8bc2;
-            border-top: 1px solid rgba(100, 130, 230, 0.3);
-            padding-top: 1.2rem;
-            display: flex;
-            align-items: center;    /* 垂直居中 */
-            justify-content: center;
-            gap: 8px;               /* 可选：控制间距 */
-            flex-wrap: wrap;
-        }
-        .footer-note a {
-            color: #8cabff;
-            text-decoration: none;
-        }
-        .footer-note a:hover {
-            text-decoration: underline;
-        }
-
-        /* 关系流向指示 */
-        .flow-hint {
-            margin-top: 0.8rem;
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            font-size: 0.6rem;
-            background: rgba(0,0,0,0.3);
-            border-radius: 1.5rem;
-            padding: 0.3rem 0.8rem;
-        }
-
-        /* 响应式：小屏幕时三列堆叠 */
-        @media (max-width: 900px) {
-            .architecture {
-                flex-direction: column;
-            }
-            .layer.agent-layer,
-            .layer.platform-layer,
-            .layer.provider-layer {
-                flex: auto;
-                width: 100%;
-            }
-            .lang-switch {
-                top: 0.8rem;
-                right: 1rem;
-            }
-        }
-        @media (max-width: 550px) {
-            body {
-                padding: 1rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .split-layout {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 <body>
 <!-- 语言切换按钮 -->
@@ -567,7 +180,70 @@
         <!--hr style="border-color: #2a3a70; margin: 0.6rem 0;"-->
 
     </div>
+<!-- 如何使用步骤区块（重写版） -->
+<div class="how-to-use">
+    <h3><i class="fas fa-rocket"></i> <span data-i18n="how_to_title">如何使用</span></h3>
+    
+    <!-- Cogentic Hub 部分 -->
+    <div style="margin-bottom: 1.5rem;">
+        <h4 style="color: #ffcd6b; font-size: 1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-cloud-upload-alt"></i> <span data-i18n="tool_endpoint_section">Cogentic Hub</span>
+        </h4>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div><span class="step-number">1</span><span class="step-title" data-i18n="step1_title">安装 Cogentic Hub</span></div>
+                <div class="step-desc" data-i18n="step1_desc">从 GitHub 获取 Cogentic Hub 并完成基本配置。</div>
+            </div>
+            <div class="step-card">
+                <div><span class="step-number">2</span><span class="step-title" data-i18n="step2_title">连接工具源</span></div>
+                <div class="step-desc" data-i18n="step2_desc">通过 CLI、OpenAPI Server 或 MCP Server 将工具接入 Hub。</div>
+            </div>
+            <div class="step-card">
+                <div><span class="step-number">3</span><span class="step-title" data-i18n="step3_title">建立工具库/工具分类</span></div>
+                <div class="step-desc" data-i18n="step3_desc">按需跨工具源加入工具，组织成工具库并分类管理。</div>
+            </div>
+        </div>
+    </div>
 
+    <!-- AI Agent 部分 -->
+    <div>
+        <h4 style="color: #ffcd6b; font-size: 1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-robot"></i> <span data-i18n="ai_agent_section">AI Agent</span>
+        </h4>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div><span class="step-number">1</span><span class="step-title" data-i18n="step4_title">Agent 端安装 skill</span></div>
+                <div class="step-desc" data-i18n="step4_desc">在 Agent 环境中安装 <code>connect-tool-library</code> 技能。</div>
+                        <div class="install-links" style="margin-top: 8px; display: flex; gap: 12px; align-items: center;">
+            <a href="https://github.com/cogenticlab/skills/release" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://clawhub.ai/skills" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                <span>🦞</span> Clawhub
+            </a>
+        </div>
+            </div>
+            <div class="step-card">
+                <div><span class="step-number">2</span><span class="step-title" data-i18n="step5_title">保存工具库密钥</span></div>
+                <div class="conversation-demo">
+                    <div class="agent-message">
+                        <i class="fas fa-robot"></i>
+                        <code class="conversation-code">connect tool library, save key pair &lt;tool_library_name=key&gt;</code>
+                    </div>
+                </div>
+            </div>
+            <div class="step-card">
+                <div><span class="step-number">3</span><span class="step-title" data-i18n="step6_title">开始使用</span></div>
+                <div class="conversation-demo">
+                    <div class="agent-message">
+                        <i class="fas fa-robot"></i>
+                        <code class="conversation-code">connect tool library to do something</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- 页脚链接 -->
     <div class="footer-note">
             <img height="24px" src="assets/cogentic_cli_banner.png"/><a href="https://github.com/cogenticlab/skills" target="_blank">https://github.com/cogenticlab/skills</a> &nbsp;|&nbsp;
@@ -576,146 +252,70 @@
 </div>
 
 <script>
-    // 语言包
-    const translations = {
-        zh: {
-            hero_title: "万级私有AI工具治理平台",
-            hero_s1: "通过单一 CLI 安全访问超过 10,000 个内部工具",
-            hero_s2: "工具调用节省 98% 的 Token",
-            hero_s3: "调用 MCP 工具无需 MCP 客户端",
-            hero_s4: "将 OpenAPI 服务器即时转变为工具",
-            hero_s5: "适用于任何 Agent 技能",
-            agent_layer_title: "Agent 层",
-            agent_layer_desc: "智能代理 · 工具聚合 · 协议客户端",
-            agent_cli_desc1: "Agent 使用 <strong>connect-tool-library</strong> 技能，可以轻松连接用户 10,000+ 私有工具",
-            agent_cli_desc2: "供 Agent 统一调用外部能力。",
-            agent_cli_connector: "聚合 工具提供层能力",
-            mcp_client_title: "MCP Client",
-            mcp_client_desc: "模型上下文协议客户端，Agent 与 MCP Server 的标准通道，携带上下文发起调用。",
-            mcp_client_connector: "↔ 通过 Cogentic Link 连接 MCP Server",
-            platform_layer_desc: "核心中枢 · 智能路由 · 连接桥梁",
-            cogentic_link_title: "Cogentic Link",
-            cogentic_link_desc: "面向Agent的唯一入口。支持Cogentic CLI，Http API，MCP方式访问",
-            cogentic_link_connector: "贯穿所有层级的数据通道",
-            polycenter_title: "Cogentic PolyCenter",
-            polycenter_desc: "总控制器，整合路由、链接、协议适配，负责策略执行与状态管理。",
-            polycenter_connector: "核心编排",
-            router_title: "Cogentic Router",
-            router_desc: "高速连接层，保障 Agent、平台、工具间低延迟双向通信，提供可靠的消息通道与链路追踪。将 Agent 请求分发至对应的服务或工具。",
-            router_connector: "贯穿所有层级的数据通道",
-            flow_recv: "接收 Agent 请求",
-            flow_route: "路由至 工具提供层层",
-            flow_schedule: "链路智能调度",
-            provider_layer_title: "工具提供层",
-            provider_layer_desc: "技能库 · 执行引擎 · 协议服务 · 由 Cogentic Hub 统一管理",
-            hub_desc: "工具连接，发布，访问枢纽。连接工具提供端(cli, OpenAPI服务器，MCP服务器)",
-            hub_connector: "聚合 工具提供层能力",
-            cli_title: "cli",
-            cli_desc: "命令行工具，快速创建、测试、部署技能。",
-            openapi_title: "OpenAPI Server",
-            openapi_desc: "标准 API 网关，由 Hub 统一发布与管理，对接外部系统和工具提供者。",
-            mcp_server_title: "MCP Server",
-            mcp_server_desc: "模型上下文服务端，Hub 生态组件，为 Agent 提供标准化上下文服务。",
-            provider_flow_up: "向平台提供具体工具能力",
-            provider_flow_hub: "Cogentic Hub 统一管理 CLI / OpenAPI / MCP Server 工具",
-            provider_flow_eco: "生态集成与分发",
-            dataflow_title: "数据流全景",
-            dataflow_arrow1: "Agent → Cogentic Link → Cogentic Platform → Cogentic Hub → 工具提供源（Cogentic Hub 生态）→ 工具",
-            dataflow_arrow2: "结果经 Cogentic Link 回传 Agent",
-            footer_note_small: "<i class='fas fa-check-circle'></i> 所有卡片图标与标题同行，CLI 和 Hub 的标签已替换为 GitHub 图标。",
-            footer_desc: "完全符合要求：左中右宽度比例1:2:2 | Platform核心层蓝色背景且内部左右（左 Link，右 Platform + Router） | Tool Provider层左侧 Hub 管理右侧 CLI/OpenAPI/MCP Server | 图标标题同行 | 可点击文字已替换为 GitHub 图标",
-            cli_link_label: "Cogentic CLI",
-            hub_link_label: "Cogentic Hub"
-        },
-        en: {
-            hero_title: "Enterprise-scale Private AI Tool Governance Platform",
-            hero_s1: "Securely access 1,000+ tools in-house with a single CLI",
-            hero_s2: "98% token savings on tool invocations",
-            hero_s3: "No MCP client needed to call MCP tools",
-            hero_s4: "Turn OpenAPI servers into tools instantly",
-            hero_s5: "Works with any Agent skill",
-            agent_layer_title: "Agent Layer",
-            agent_layer_desc: "Intelligent Agent · Tool Aggregation · Protocol Client",
-            agent_cli_desc1: "Agent uses <strong>connect-tool-library</strong> skill to easily connect users' 10,000+ private tools",
-            agent_cli_desc2: "Unified external invocation for Agent.",
-            agent_cli_connector: "Aggregates Tool Provider capabilities",
-            mcp_client_title: "MCP Client",
-            mcp_client_desc: "Model Context Protocol client, standard channel between Agent and MCP Server, carries context for invocation.",
-            mcp_client_connector: "↔ Connect to MCP Server via Cogentic Link",
-            platform_layer_desc: "Core Hub · Intelligent Routing · Connectivity Bridge",
-            cogentic_link_title: "Cogentic Link",
-            cogentic_link_desc: "Single entry point for Agents. Supports Cogentic CLI, HTTP API, and MCP access.",
-            cogentic_link_connector: "Data channel across all layers",
-            polycenter_title: "Cogentic PolyCenter",
-            polycenter_desc: "Master controller integrating routing, linking, and protocol adaptation. Handles policy execution and state management.",
-            polycenter_connector: "Core Orchestration",
-            router_title: "Cogentic Router",
-            router_desc: "High-speed connection layer ensuring low-latency bidirectional communication between Agent, Platform, and Tools. Distributes Agent requests to appropriate services or tools.",
-            router_connector: "Data channel across all layers",
-            flow_recv: "Receive Agent requests",
-            flow_route: "Route to Tool Provider layer",
-            flow_schedule: "Intelligent link scheduling",
-            provider_layer_title: "Tool Provider Layer",
-            provider_layer_desc: "Skill Registry · Execution Engine · Protocol Services · Unified by Cogentic Hub",
-            hub_desc: "Hub for tool connection, publishing, and access. Connects tool providers (CLI, OpenAPI Server, MCP Server).",
-            hub_connector: "Aggregates Tool Provider capabilities",
-            cli_title: "CLI",
-            cli_desc: "Command-line tool for quick skill creation, testing, and deployment.",
-            openapi_title: "OpenAPI Server",
-            openapi_desc: "Standard API gateway, unified publishing and management by Hub, integrates external systems and tool providers.",
-            mcp_server_title: "MCP Server",
-            mcp_server_desc: "Model Context Protocol server, Hub ecosystem component, provides standardized context service for Agents.",
-            provider_flow_up: "Provide tool capabilities to Platform",
-            provider_flow_hub: "Cogentic Hub centrally manages CLI / OpenAPI / MCP Server tools",
-            provider_flow_eco: "Ecosystem integration and distribution",
-            dataflow_title: "Data Flow Panorama",
-            dataflow_arrow1: "Agent → Cogentic Link → Cogentic Platform → Cogentic Hub → Tool Providers (Cogentic Hub Ecosystem) → Tool",
-            dataflow_arrow2: "Results returned to Agent via Cogentic Link",
-            footer_note_small: "<i class='fas fa-check-circle'></i> All cards have icon+title on same row; CLI and Hub labels replaced with GitHub icon.",
-            footer_desc: "Fully compliant: left-center-right width ratio 1:2:2 | Platform core blue background with internal left-right (Left: Link, Right: Platform + Router) | Tool Provider left: Hub manages right: CLI/OpenAPI/MCP Server | Icon+title inline | Clickable text replaced with GitHub icon",
-            cli_link_label: "Cogentic CLI",
-            hub_link_label: "Cogentic Hub"
-        }
-    };
+    let currentLang = null;
+    let translations = null;
 
-    let currentLang = 'zh';
+    function loadLanguage(lang, callback) {
+        // 移除之前的语言文件 script 标签（可选）
+        const oldScript = document.querySelector(`script[data-lang-src="${currentLang}"]`);
+        if (oldScript) {
+            oldScript.remove();
+        }
+        const script = document.createElement('script');
+        script.setAttribute('data-lang-src', lang);
+        script.src = `assets/lang/${lang}.js`;
+        script.onload = function() {
+            // 根据加载的语言获取对应的翻译对象
+            if (lang === 'zh') {
+                translations = zhTranslations;
+            } else if (lang === 'en') {
+                translations = enTranslations;
+            }
+            callback();
+        };
+        script.onerror = function() {
+            console.error(`Failed to load language file: ${lang}.js`);
+            if (lang !== 'en') {
+                loadLanguage('en', callback);
+            }
+        };
+        document.head.appendChild(script);
+    }
 
     function setLanguage(lang) {
+        if (currentLang === lang) return;
         currentLang = lang;
-        document.documentElement.setAttribute('data-lang', lang);
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang][key] !== undefined) {
-                if (key === 'agent_cli_desc1' || key === 'footer_note_small') {
-                    el.innerHTML = translations[lang][key];
-                } else {
-                    el.innerText = translations[lang][key];
+        loadLanguage(lang, function() {
+            // 更新所有带 data-i18n 的元素
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations && translations[key] !== undefined) {
+                    if (key === 'agent_cli_desc1' || key === 'footer_note_small') {
+                        el.innerHTML = translations[key];
+                    } else {
+                        el.innerText = translations[key];
+                    }
                 }
-            }
-        });
-        document.querySelectorAll('.lang-switch button').forEach(btn => {
-            if ((lang === 'zh' && btn.id === 'lang-zh') || (lang === 'en' && btn.id === 'lang-en')) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
+            });
+            document.documentElement.setAttribute('data-lang', lang);
+            document.querySelectorAll('.lang-switch button').forEach(btn => {
+                if ((lang === 'zh' && btn.id === 'lang-zh') || (lang === 'en' && btn.id === 'lang-en')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
         });
     }
 
-    // 根据浏览器语言自动选择初始语言
     function detectBrowserLanguage() {
         const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang && browserLang.toLowerCase().startsWith('zh')) {
-            return 'zh';
-        }
-        return 'en';
+        return browserLang && browserLang.toLowerCase().startsWith('zh') ? 'zh' : 'en';
     }
 
-    // 绑定切换事件
     document.getElementById('lang-zh').addEventListener('click', () => setLanguage('zh'));
     document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
 
-    // 初始化：根据浏览器语言设置
     const initialLang = detectBrowserLanguage();
     setLanguage(initialLang);
 </script>

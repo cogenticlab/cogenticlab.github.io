@@ -1,0 +1,545 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at 20% 30%, #0b1120, #03050b);
+    font-family: 'Inter', sans-serif;
+    color: #edf2ff;
+    line-height: 1.4;
+    padding: 2rem 1.5rem;
+    position: relative;
+}
+
+/* 语言切换按钮 */
+.lang-switch {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 1000;
+    background: rgba(20, 30, 55, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(100, 150, 255, 0.5);
+    display: flex;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.lang-switch button {
+    background: transparent;
+    border: none;
+    color: #cbd9ff;
+    padding: 0.2rem 0.7rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.lang-switch button.active {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 0 6px #3b82f6;
+}
+
+.lang-switch button:hover:not(.active) {
+    background: rgba(59, 130, 246, 0.4);
+    color: white;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 头部 */
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFFFFF, #8aabff, #4f7aff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.hero .sub {
+    font-size: 1.1rem;
+    color: #9db4ff;
+    margin-top: 0.4rem;
+    border-bottom: 1px dashed rgba(100, 140, 255, 0.4);
+    display: inline-block;
+}
+
+/* 三列布局：左中右，宽度比例 1:2:2 */
+.architecture {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    margin: 1.5rem 0 1rem;
+}
+
+.layer {
+    background: rgba(10, 18, 32, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius: 1.5rem;
+    padding: 1rem 0.9rem 1.2rem;
+    border: 1px solid rgba(80, 120, 255, 0.35);
+    transition: all 0.2s;
+    position: relative;
+}
+
+/* Agent 层: flex-grow 1 */
+.layer.agent-layer {
+    flex: 1;
+}
+
+/* Platform 核心层: flex-grow 2 */
+.layer.platform-layer {
+    flex: 2;
+}
+
+/* 工具提供层层: flex-grow 2 */
+.layer.provider-layer {
+    flex: 2;
+}
+
+/* Platform核心层专用蓝色背景 */
+.layer.platform-layer.platform-core-bg {
+    background: linear-gradient(145deg, #0f2b5e, #0a1a3e);
+    border: 1px solid #3b82f6;
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* 层次标题 */
+.layer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(100, 140, 255, 0.6);
+}
+
+.layer-header i {
+    font-size: 1.4rem;
+    color: #7b9eff;
+}
+
+.layer-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.layer-desc {
+    font-size: 0.65rem;
+    color: #adc0ff;
+    margin-bottom: 0.8rem;
+}
+
+/* 内部左右布局 */
+.split-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: stretch;
+}
+
+.split-left,
+.split-right {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* ========== 全局卡片样式 ========== */
+.card {
+    background: rgba(18, 28, 48, 0.85);
+    border-radius: 1rem;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid rgba(90, 130, 255, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    backdrop-filter: blur(4px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 默认取消所有卡片的悬浮效果 */
+.card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(90, 130, 255, 0.4);
+    background: rgba(18, 28, 48, 0.85);
+}
+
+a.card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* 图标和标题同行 */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.card-icon {
+    font-size: 1.2rem;
+    color: #8fabff;
+    flex-shrink: 0;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.badge-sm {
+    background: #2a3a6e;
+    font-size: 0.55rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 30px;
+    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-desc {
+    font-size: 0.65rem;
+    color: #cbd9ff;
+    line-height: 1.35;
+    margin-top: 0.2rem;
+    flex: 1;
+}
+
+.connector-badge {
+    margin-top: 0.5rem;
+    font-size: 0.6rem;
+    color: #7d95e0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-top: 1px dashed rgba(100, 130, 230, 0.4);
+    padding-top: 0.4rem;
+}
+
+/* 特定蓝色背景卡片（connect-tool-library 和 Cogentic Hub）保留悬浮效果 */
+.card.blue-bg {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    border-color: #3b82f6;
+    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+}
+
+.card.blue-bg .card-icon {
+    color: #c4e0ff;
+}
+
+.card.blue-bg .card-title {
+    color: #ffffff;
+}
+
+/* 仅保留蓝色背景卡片的悬浮效果 */
+.card.blue-bg:hover {
+    transform: translateY(-2px);
+    border-color: #5f82ff;
+    box-shadow: 0 8px 18px -6px rgba(79, 125, 255, 0.4);
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+/* 平台核心层内的卡片（无悬浮） */
+.platform-core-bg .card {
+    background: rgba(25, 45, 75, 0.9);
+    border-color: rgba(100, 150, 255, 0.5);
+}
+
+.platform-core-bg .card:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(25, 45, 75, 0.9);
+    border-color: rgba(100, 150, 255, 0.5);
+}
+
+/* 从属关系容器：Hub 生态 */
+.hub-ecosystem {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
+    padding: 0.6rem;
+    border: 1px dashed rgba(100, 150, 255, 0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.hub-ecosystem::before {
+    content: "由 Cogentic Hub 管理";
+    position: absolute;
+    top: -0.6rem;
+    left: 0.8rem;
+    background: #1e3a8a;
+    padding: 0.15rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.55rem;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.2px;
+    backdrop-filter: blur(4px);
+    border: 1px solid #3b82f6;
+}
+
+[data-lang="en"] .hub-ecosystem::before {
+    content: "Managed by Cogentic Hub";
+}
+
+/* 右侧三个卡片进一步缩小（保持图标标题同行） */
+.hub-ecosystem .card {
+    padding: 0.5rem 0.6rem;
+}
+
+.hub-ecosystem .card .card-icon {
+    font-size: 1rem;
+}
+
+.hub-ecosystem .card .card-title {
+    font-size: 0.8rem;
+}
+
+.hub-ecosystem .card .card-desc {
+    font-size: 0.6rem;
+    line-height: 1.3;
+}
+
+.hub-ecosystem .card .connector-badge {
+    font-size: 0.55rem;
+    margin-top: 0.4rem;
+    padding-top: 0.3rem;
+}
+
+.hub-ecosystem .badge-sm {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.35rem;
+}
+
+.hub-ecosystem .card:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(18, 28, 48, 0.85);
+    border-color: rgba(90, 130, 255, 0.4);
+}
+
+/* 底部说明 */
+.footer-note {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #7b8bc2;
+    border-top: 1px solid rgba(100, 130, 230, 0.3);
+    padding-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    /* 垂直居中 */
+    justify-content: center;
+    gap: 8px;
+    /* 可选：控制间距 */
+    flex-wrap: wrap;
+}
+
+.footer-note a {
+    color: #8cabff;
+    text-decoration: none;
+}
+
+.footer-note a:hover {
+    text-decoration: underline;
+}
+
+/* 关系流向指示 */
+.flow-hint {
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    font-size: 0.6rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1.5rem;
+    padding: 0.3rem 0.8rem;
+}
+
+/* 如何使用步骤区块 */
+.how-to-use {
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1.5rem;
+    padding: 1.2rem 1.5rem;
+}
+
+.how-to-use h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffcd6b;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.step-card {
+    background: rgba(18, 28, 48, 0.7);
+    border-radius: 1rem;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid #3b82f6;
+    transition: all 0.2s;
+}
+
+.step-card:hover {
+    background: rgba(28, 40, 70, 0.85);
+    transform: translateX(4px);
+}
+
+.step-number {
+    display: inline-block;
+    background: #3b82f6;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.6rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 0.6rem;
+    color: white;
+}
+
+.step-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #ffffff;
+}
+
+.step-desc {
+    font-size: 0.7rem;
+    color: #cbd9ff;
+    line-height: 1.4;
+    margin-left: 2.2rem;
+}
+
+.step-desc code {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.1rem 0.3rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: #ffcd6b;
+}
+
+/* 聊天输入框样式（用于步骤5/6） */
+.conversation-demo {
+    
+    margin-top: 0.5rem;
+}
+
+.agent-message {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(30, 40, 70, 0.7);
+    border-radius: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(100, 150, 255, 0.4);
+    backdrop-filter: blur(4px);
+    font-size: 0.75rem;
+    color: #eef2ff;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.agent-message i {
+    font-size: 0.9rem;
+    color: #8fabff;
+}
+
+.conversation-code {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.7rem;
+    color: #ffcd6b;
+    border: 1px solid rgba(255, 205, 107, 0.3);
+    word-break: break-all;
+}
+
+/* 响应式适配（已有，但确保步骤网格在小屏幕单列） */
+@media (max-width: 900px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 响应式：小屏幕时三列堆叠 */
+@media (max-width: 900px) {
+    .architecture {
+        flex-direction: column;
+    }
+
+    .layer.agent-layer,
+    .layer.platform-layer,
+    .layer.provider-layer {
+        flex: auto;
+        width: 100%;
+    }
+
+    .lang-switch {
+        top: 0.8rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 550px) {
+    body {
+        padding: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .split-layout {
+        flex-direction: column;
+    }
+}
