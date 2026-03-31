@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <script src="assets/lang/zh.js"></script>
+    <script src="assets/lang/en.js"></script>
 </head>
 <body>
 <!-- 语言切换按钮 -->
@@ -21,16 +23,16 @@
     <div class="hero">
         <img width="512px" src="assets/cogentic_banner.png" alt="Cogentic Banner" />
         <h1 data-i18n="hero_title">万级私有AI工具治理平台</h1>
-        <p><h2 class="sub" data-i18n="hero_s1">通过单一 CLI 安全访问超过 10,000 个内部工具</h2></p>
-        <p><h2 class="sub" data-i18n="hero_s2">工具调用节省 98% 的 Token</h2></p>
-        <p><h2 class="sub" data-i18n="hero_s3">调用 MCP 工具无需 MCP 客户端</h2></p>
-        <p><h2 class="sub" data-i18n="hero_s4">将 OpenAPI 服务器即时转变为工具</h2></p>
-        <p><h2 class="sub" data-i18n="hero_s5">适用于任何 Agent 技能</h2></p>
+        <p><h2 class="sub" data-i18n="hero_s1">通过单一 CLI 安全访问超过 10,000 个内部工具</h2>
+        <p><h2 class="sub" data-i18n="hero_s2">工具调用节省 98% 的 Token</h2>
+        <p><h2 class="sub" data-i18n="hero_s3">调用 MCP 工具无需 MCP 客户端</h2>
+        <p><h2 class="sub" data-i18n="hero_s4">将 OpenAPI 服务器即时转变为工具</h2>
+        <p><h2 class="sub" data-i18n="hero_s5">适用于任何 Agent 技能</h2>
     </div>
 
     <!-- 三列布局 -->
     <div class="architecture">
-        
+
         <!-- ========= 左侧：Agent 层 ========= -->
         <div class="layer agent-layer">
             <div class="layer-header">
@@ -180,79 +182,79 @@
         <!--hr style="border-color: #2a3a70; margin: 0.6rem 0;"-->
 
     </div>
-<!-- 如何使用步骤区块（重写版） -->
-<div class="how-to-use">
-    <h3><i class="fas fa-rocket"></i> <span data-i18n="how_to_title">如何使用</span></h3>
-    
-    <!-- Cogentic Hub 部分 -->
-    <div style="margin-bottom: 1.5rem;">
-        <h4 style="color: #ffcd6b; font-size: 1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fas fa-cloud-upload-alt"></i> <span data-i18n="tool_endpoint_section">Cogentic Hub</span>
-        </h4>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div><span class="step-number">1</span><span class="step-title" data-i18n="step1_title">安装 Cogentic Hub</span></div>
-                <div class="step-desc" data-i18n="step1_desc">从 GitHub 获取 Cogentic Hub 并完成基本配置。</div>
-                <div class="install-links" style="margin-top: 8px; display: flex; gap: 12px; align-items: center;">
-                    <a href="https://github.com/cogenticlab/cogentichub/releases" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-            <div class="step-card">
-                <div><span class="step-number">2</span><span class="step-title" data-i18n="step2_title">连接工具源</span></div>
-                <div class="step-desc" data-i18n="step2_desc">通过 CLI、OpenAPI Server 或 MCP Server 将工具接入 Hub。</div>
-            </div>
-            <div class="step-card">
-                <div><span class="step-number">3</span><span class="step-title" data-i18n="step3_title">建立工具库/工具分类</span></div>
-                <div class="step-desc" data-i18n="step3_desc">按需跨工具源加入工具，组织成工具库并分类管理。</div>
-            </div>
-        </div>
-    </div>
+    <!-- 如何使用步骤区块（重写版） -->
+    <div class="how-to-use">
+        <h3><i class="fas fa-rocket"></i> <span data-i18n="how_to_title">如何使用</span></h3>
 
-    <!-- AI Agent 部分 -->
-    <div>
-        <h4 style="color: #ffcd6b; font-size: 1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
-            <i class="fas fa-robot"></i> <span data-i18n="ai_agent_section">AI Agent</span>
-        </h4>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div><span class="step-number">1</span><span class="step-title" data-i18n="step4_title">Agent 端安装 skill</span></div>
-                <div class="step-desc" data-i18n="step4_desc">在 Agent 环境中安装 <code>connect-tool-library</code> 技能。</div>
-                        <div class="install-links" style="margin-top: 8px; display: flex; gap: 12px; align-items: center;">
-            <a href="https://github.com/cogenticlab/skills/releases" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://clawhub.ai/skills" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                <span>🦞</span> ClawHub
-            </a>
-        </div>
-            </div>
-            <div class="step-card">
-                <div><span class="step-number">2</span><span class="step-title" data-i18n="step5_title">保存工具库密钥</span></div>
-                <div class="conversation-demo">
-                    <div class="agent-message">
-                        <i class="fas fa-robot"></i>
-                        <code class="conversation-code">connect tool library, save key pair &lt;tool_library_name=key&gt;</code>
+        <!-- Cogentic Hub 部分 -->
+        <div style="margin-bottom: 1.5rem;">
+            <h4 style="color: #ffcd6b; font-size: 1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-cloud-upload-alt"></i> <span data-i18n="tool_endpoint_section">Cogentic Hub</span>
+            </h4>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div><span class="step-number">1</span><span class="step-title" data-i18n="step1_title">安装 Cogentic Hub</span></div>
+                    <div class="step-desc" data-i18n="step1_desc">从 GitHub 获取 Cogentic Hub 并完成基本配置。</div>
+                    <div class="install-links" style="margin-top: 8px; display: flex; gap: 12px; align-items: center;">
+                        <a href="https://github.com/cogenticlab/cogentichub/releases" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
                     </div>
                 </div>
+                <div class="step-card">
+                    <div><span class="step-number">2</span><span class="step-title" data-i18n="step2_title">连接工具源</span></div>
+                    <div class="step-desc" data-i18n="step2_desc">通过 CLI、OpenAPI Server 或 MCP Server 将工具接入 Hub。</div>
+                </div>
+                <div class="step-card">
+                    <div><span class="step-number">3</span><span class="step-title" data-i18n="step3_title">建立工具库/工具分类</span></div>
+                    <div class="step-desc" data-i18n="step3_desc">按需跨工具源加入工具，组织成工具库并分类管理。</div>
+                </div>
             </div>
-            <div class="step-card">
-                <div><span class="step-number">3</span><span class="step-title" data-i18n="step6_title">开始使用</span></div>
-                <div class="conversation-demo">
-                    <div class="agent-message">
-                        <i class="fas fa-robot"></i>
-                        <code class="conversation-code">connect tool library to do something</code>
+        </div>
+
+        <!-- AI Agent 部分 -->
+        <div>
+            <h4 style="color: #ffcd6b; font-size: 1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-robot"></i> <span data-i18n="ai_agent_section">AI Agent</span>
+            </h4>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div><span class="step-number">1</span><span class="step-title" data-i18n="step4_title">Agent 端安装 skill</span></div>
+                    <div class="step-desc" data-i18n="step4_desc">在 Agent 环境中安装 <code>connect-tool-library</code> 技能。</div>
+                    <div class="install-links" style="margin-top: 8px; display: flex; gap: 12px; align-items: center;">
+                        <a href="https://github.com/cogenticlab/skills/releases" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://clawhub.ai/skills" target="_blank" style="color: #8cabff; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                            <span>🦞</span> ClawHub
+                        </a>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div><span class="step-number">2</span><span class="step-title" data-i18n="step5_title">保存工具库密钥</span></div>
+                    <div class="conversation-demo">
+                        <div class="agent-message">
+                            <i class="fas fa-robot"></i>
+                            <code class="conversation-code">connect tool library, save key pair &lt;tool_library_name=key&gt;</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div><span class="step-number">3</span><span class="step-title" data-i18n="step6_title">开始使用</span></div>
+                    <div class="conversation-demo">
+                        <div class="agent-message">
+                            <i class="fas fa-robot"></i>
+                            <code class="conversation-code">connect tool library to do something</code>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <!-- 页脚链接 -->
     <div class="footer-note">
-            <img height="24px" src="assets/cogentic_cli_banner.png"/><a href="https://github.com/cogenticlab/skills" target="_blank">https://github.com/cogenticlab/skills</a> &nbsp;|&nbsp;
-            <img height="24px" src="assets/cogentic_hub_banner.png"/><a href="https://github.com/cogenticlab/cogentichub" target="_blank">https://github.com/cogenticlab/cogentichub</a>
+        <img height="24px" src="assets/cogentic_cli_banner.png" alt=""/><a href="https://github.com/cogenticlab/skills" target="_blank">https://github.com/cogenticlab/skills</a> &nbsp;|&nbsp;
+        <img height="24px" src="assets/cogentic_hub_banner.png" alt=""/><a href="https://github.com/cogenticlab/cogentichub" target="_blank">https://github.com/cogenticlab/cogentichub</a>
     </div>
 </div>
 
@@ -261,30 +263,36 @@
     let translations = null;
 
     function loadLanguage(lang, callback) {
-        // 移除之前的语言文件 script 标签（可选）
-        const oldScript = document.querySelector(`script[data-lang-src="${currentLang}"]`);
-        if (oldScript) {
-            oldScript.remove();
+        if (lang === 'zh') {
+            translations = zhTranslations;
+        } else if (lang === 'en') {
+            translations = enTranslations;
         }
-        const script = document.createElement('script');
-        script.setAttribute('data-lang-src', lang);
-        script.src = `assets/lang/${lang}.js`;
-        script.onload = function() {
-            // 根据加载的语言获取对应的翻译对象
-            if (lang === 'zh') {
-                translations = zhTranslations;
-            } else if (lang === 'en') {
-                translations = enTranslations;
-            }
-            callback();
-        };
-        script.onerror = function() {
-            console.error(`Failed to load language file: ${lang}.js`);
-            if (lang !== 'en') {
-                loadLanguage('en', callback);
-            }
-        };
-        document.head.appendChild(script);
+        callback();
+        // 移除之前的语言文件 script 标签（可选）
+        // const oldScript = document.querySelector(`script[data-lang-src="${currentLang}"]`);
+        // if (oldScript) {
+        //     oldScript.remove();
+        // }
+        // const script = document.createElement('script');
+        // script.setAttribute('data-lang-src', lang);
+        // script.src = `assets/lang/${lang}.js`;
+        // script.onload = function() {
+        //     // 根据加载的语言获取对应的翻译对象
+        //     if (lang === 'zh') {
+        //         translations = zhTranslations;
+        //     } else if (lang === 'en') {
+        //         translations = enTranslations;
+        //     }
+        //     callback();
+        // };
+        // script.onerror = function() {
+        //     console.error(`Failed to load language file: ${lang}.js`);
+        //     if (lang !== 'en') {
+        //         loadLanguage('en', callback);
+        //     }
+        // };
+        // document.head.appendChild(script);
     }
 
     function setLanguage(lang) {
